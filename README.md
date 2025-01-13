@@ -1,2 +1,2 @@
 # Emociones_3
-Emociones en Pytmnzbz
+Emociones en Python
