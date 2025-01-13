@@ -1,48 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reconocimiento Facial</title>
-    <!-- Enlace al archivo CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0f0f;
+            color: #d9fbee;
+            animation: fadeIn 1s ease-in-out;
+        }
 
+        h1, h2 {
+            color: #29d3c8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background-color: #0d1e1e;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(15, 33, 33, 0.3);
+        }
+
+        .section h1, .section h2 {
+            margin-bottom: 16px;
+        }
+
+        .btn-custom {
+            background-color: #29d3c8;
+            color: #0a0f0f;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #1fb7a6;
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(41, 211, 200, 0.4);
+        }
+
+        .image-container, .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .image-container img, .image-gallery img {
+            border: 2px solid #29d3c8;
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Sección de subir imagen -->
-        <div class="upload-section">
-            <h1>Sube una imagen para analizarla</h1>
-            <form id="uploadForm" enctype="multipart/form-data">
-                <input type="file" id="image" name="image" accept="image/*">
-                <button type="submit">Subir imagen</button>
+        <div class="section">
+            <h1 class="text-3xl font-bold text-center">Sube una imagen para analizarla</h1>
+            <form id="uploadForm" enctype="multipart/form-data" class="text-center">
+                <input 
+                    type="file" 
+                    id="image" 
+                    name="image" 
+                    accept="image/*" 
+                    class="mb-4 bg-custom text-d9fbee border border-gray-600 rounded-lg p-2"
+                >
+                <br>
+                <button type="submit" class="btn-custom">Subir imagen</button>
             </form>
         </div>
 
         <!-- Sección de imagen original -->
-        <div class="original-image-section">
-            <h2>Imagen original</h2>
+        <div class="section">
+            <h2 class="text-2xl font-semibold">Imagen Original</h2>
             <div class="image-container">
                 <img id="originalImage" src="" alt="Imagen Original">
             </div>
         </div>
 
         <!-- Sección de historial de imágenes -->
-        <div class="historico-images-section">
-            <h2>Historial de Imágenes Subidas</h2>
+        <div class="section">
+            <h2 class="text-2xl font-semibold">Historial de Imágenes Subidas</h2>
             <div id="historicoImages" class="image-gallery"></div>
         </div>
 
-
         <!-- Sección de imágenes procesadas -->
-        <div class="processed-images-section">
-            <h2>Imágenes procesadas</h2>
+        <div class="section">
+            <h2 class="text-2xl font-semibold">Imágenes Procesadas</h2>
             <div id="processedImages" class="image-gallery"></div>
         </div>
     </div>
-
-    <!-- Enlace al archivo JS -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>
