@@ -4,45 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reconocimiento Facial</title>
-    <!-- Enlace al archivo CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0f0f;
+            color: #d9fbee;
+            animation: fadeIn 1s ease-in-out;
+        }
 
+        h1,
+        h2 {
+            color: #29d3c8;
+        }
+
+        .btn-custom {
+            background-color: #29d3c8;
+            color: #0a0f0f;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #1fb7a6;
+            transform: scale(1.08);
+            box-shadow: 0 6px 18px rgba(41, 211, 200, 0.4);
+        }
+
+        .image-container img {
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(15, 33, 33, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
+<body class="bg-custom min-h-screen">
+    <div class="container mx-auto px-4 py-8">
         <!-- Sección de subir imagen -->
-        <div class="upload-section">
-            <h1>Sube una imagen para analizarla</h1>
-            <form id="uploadForm" enctype="multipart/form-data">
-                <input type="file" id="image" name="image" accept="image/*">
-                <button type="submit">Subir imagen</button>
+        <div class="text-center mb-8">
+            <h1 class="text-5xl font-bold mb-4">Reconocimiento Facial</h1>
+            <p class="text-lg">Sube una imagen para analizarla</p>
+            <form id="uploadForm" class="mt-6">
+                <div class="flex justify-center">
+                    <input 
+                        type="file" 
+                        id="image" 
+                        name="image" 
+                        accept="image/*"
+                        class="block w-full text-sm text-gray-500
+                               file:mr-4 file:py-2 file:px-4
+                               file:rounded-lg file:border-0
+                               file:text-sm file:font-semibold
+                               file:bg-teal-500 file:text-teal-900
+                               hover:file:bg-teal-400"
+                    />
+                </div>
+                <button type="submit" class="btn-custom mt-6 w-full">Subir imagen</button>
             </form>
         </div>
 
         <!-- Sección de imagen original -->
-        <div class="original-image-section">
-            <h2>Imagen original</h2>
-            <div class="image-container">
-                <img id="originalImage" src="" alt="Imagen Original">
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Imagen original</h2>
+            <div class="image-container flex justify-center">
+                <img id="originalImage" class="max-w-md" src="" alt="Imagen Original">
             </div>
         </div>
 
         <!-- Sección de historial de imágenes -->
-        <div class="historico-images-section">
-            <h2>Historial de Imágenes Subidas</h2>
-            <div id="historicoImages" class="image-gallery"></div>
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Historial de Imágenes Subidas</h2>
+            <div id="historicoImages" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Imágenes del historial -->
+            </div>
         </div>
 
-
         <!-- Sección de imágenes procesadas -->
-        <div class="processed-images-section">
-            <h2>Imágenes procesadas</h2>
-            <div id="processedImages" class="image-gallery"></div>
+        <div>
+            <h2 class="text-2xl font-semibold mb-4">Imágenes procesadas</h2>
+            <div id="processedImages" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Imágenes procesadas -->
+            </div>
         </div>
     </div>
 
-    <!-- Enlace al archivo JS -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#uploadForm').on('submit', function (e) {
+                e.preventDefault();
+                // Lógica de carga de imagen
+            });
+        });
+    </script>
 </body>
 </html>
