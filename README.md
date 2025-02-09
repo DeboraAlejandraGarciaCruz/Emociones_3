@@ -4,4 +4,4 @@ Emociones en Python
 
 Proyecto final
 
-Programación logica y funcional.
+Programación logica y funcional. 
