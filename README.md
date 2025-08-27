@@ -5,7 +5,3 @@ Emociones en Python
 Proyecto final
 
 Programación logica y funcional. 
-F
-U
-J
-U
