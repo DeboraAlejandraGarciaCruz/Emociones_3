@@ -1,4 +1,4 @@
-L# Emociones_3
+# Emociones_3
 
 Emociones en Python 
 
