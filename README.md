@@ -1,4 +1,4 @@
-FFY
+, FF
 # Emociones_3
 
 Emociones en Python 
