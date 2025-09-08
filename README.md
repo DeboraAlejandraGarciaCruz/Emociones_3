@@ -1,4 +1,4 @@
-XXFF
+XXF
 # Emociones_3
 
 Emociones en Python 
